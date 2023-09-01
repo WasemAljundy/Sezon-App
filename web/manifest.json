@@ -1,0 +1,35 @@
+{
+     "name": "Sezon App",
+     "short_name": "Sezon App",
+     "start_url": ".",
+     "display": "standalone",
+     "background_color": "#0175C2",
+     "theme_color": "#0175C2",
+     "description": "Creating a comprehensive requirement task for an eCommerce app using Flutter with GetX state management, custom UI designed, and integrating Firebase for backend services would involve several key components.",
+     "orientation": "portrait-primary",
+     "prefer_related_applications": false,
+     "icons": [
+          {
+               "src": "icons/Icon-192.png",
+               "sizes": "192x192",
+               "type": "image/png"
+          },
+          {
+               "src": "icons/Icon-512.png",
+               "sizes": "512x512",
+               "type": "image/png"
+          },
+          {
+               "src": "icons/Icon-maskable-192.png",
+               "sizes": "192x192",
+               "type": "image/png",
+               "purpose": "maskable"
+          },
+          {
+               "src": "icons/Icon-maskable-512.png",
+               "sizes": "512x512",
+               "type": "image/png",
+               "purpose": "maskable"
+          }
+     ]
+}
