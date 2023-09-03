@@ -1,17 +1,21 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
-import 'package:sezon_app/app/data/models/User.dart';
-import '../../../../utils/constants.dart';
-import '../../../services/api_call_status.dart';
-import '../../../services/base_client.dart';
+
 
 class CategoryController extends GetxController {
+
+  final RxInt tabIndex = 0.obs;
+
+  void changeTabIndex(int index) {
+    tabIndex.value = index;
+  }
+
+  int getSelectedIndex() {
+    return tabIndex.value;
+  }
 
 
   @override
   void onInit() {
-    // getUsers();
     super.onInit();
   }
 }

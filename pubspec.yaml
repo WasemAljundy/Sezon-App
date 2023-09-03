@@ -51,6 +51,8 @@ dependencies:
   firebase_core: ^2.15.1
   firebase_auth: ^4.8.0
   firebase_messaging: ^14.6.7
+  cloud_firestore: ^4.8.4
+  firebase_storage: ^11.2.5
   smooth_corner: ^1.1.0
 
 dev_dependencies:

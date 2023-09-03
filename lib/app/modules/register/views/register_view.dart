@@ -30,7 +30,6 @@ class RegisterView extends GetView<RegisterController> {
               padding: EdgeInsets.symmetric(horizontal: 20.h),
               child: AppTextField(
                 controller: controller.mobileController,
-                obscureText: true,
                 labelText: Strings.mobilePhone.tr,
                 keyboardType: TextInputType.text,
                 hint: '12345',
@@ -64,7 +63,13 @@ class RegisterView extends GetView<RegisterController> {
                 minimumSize: Size(340.h, 50.w),
                 backgroundColor: Color(0xffD92728),
               ),
-              onPressed: () => Get.toNamed(AppPages.REGISTER_CODE),
+              // onPressed: () => Get.toNamed(AppPages.REGISTER_CODE),
+              onPressed: () {
+                controller.createAccount(
+                  email: controller.nameController.text,
+                  password: controller.passwordController.text,
+                );
+              },
               child: Text(Strings.register.tr),
             ),
             SizedBox(height: 20.h),

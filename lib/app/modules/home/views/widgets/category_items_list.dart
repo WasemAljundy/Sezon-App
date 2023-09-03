@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sezon_app/generated/assets.dart';
 
 class CategoryItemsList extends StatelessWidget {
   const CategoryItemsList({
@@ -29,8 +28,8 @@ class CategoryItemsList extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                child: Image.asset(
-                  Assets.imagesPerson2,
+                child: Image.network(
+                  'https://i2.wp.com/www.thinkmakeshareblog.com/wp-content/uploads/Shirt-Embroidery-_-thinkmakeshareblog.jpg?fit=822%2C1233&ssl=1',
                   width: 70.w,
                   height: 70.h,
                   fit: BoxFit.fill,

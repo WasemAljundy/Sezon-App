@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sezon_app/app/modules/home/controllers/main_nav.controller.dart';
 import 'package:sezon_app/app/modules/home/views/nav_pages/category_nav_page.dart';
@@ -22,7 +23,7 @@ class MainView extends GetView<MainNavController> {
               controller.homeController.changeTabTitle(),
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
