@@ -35,13 +35,11 @@ class ShoppingNavPage extends GetView<ShoppingController> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Card(
-                        elevation: 3,
-                        // Adjust the elevation to your preference
                         margin: EdgeInsets.symmetric(
-                            horizontal: 20.w, vertical: 10.h),
+                          horizontal: 20.w,
+                          vertical: 10.h,
+                        ),
                         child: ListTile(
-                          // contentPadding: EdgeInsets.symmetric(
-                          //     horizontal: 20.w, vertical: 10.h),
                           onTap: () {},
                           leading: Image.network(
                             'https://crewelghoul.com/wp-content/uploads/2022/07/butterfly-embroidery-1.jpg.webp',
