@@ -23,7 +23,7 @@ class HomeController extends GetxController {
     } else if (tabIndex.value == 1) {
       return 'الفئات';
     } else if (tabIndex.value == 2) {
-      return 'مشترياتي';
+      return 'طلباتي';
     } else if (tabIndex.value == 3) {
       return 'المفضلة';
     }

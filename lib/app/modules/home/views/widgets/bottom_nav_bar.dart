@@ -38,7 +38,7 @@ class BottomNavBar extends StatelessWidget {
             ),
           ),
           BottomNavigationBarItem(
-            label: 'مشترياتي',
+            label: 'طلباتي',
             icon: Icon(
               Icons.shopping_cart_rounded,
               size: 30.r,

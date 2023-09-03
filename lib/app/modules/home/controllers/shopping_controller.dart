@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
-import 'package:sezon_app/app/data/models/User.dart';
-import '../../../../utils/constants.dart';
-import '../../../services/api_call_status.dart';
-import '../../../services/base_client.dart';
+
 
 class ShoppingController extends GetxController {
 
+  late TabController tabController;
+  RxInt selectedIndex = 0.obs;
+
+
+  void changeTabIndex(int index) {
+    selectedIndex.value = index;
+  }
 
   @override
   void onInit() {
-    // getUsers();
     super.onInit();
   }
 }
