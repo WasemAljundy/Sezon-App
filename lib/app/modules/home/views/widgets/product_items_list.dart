@@ -38,6 +38,35 @@ class ProductItemsList extends StatelessWidget {
                 width: double.infinity,
                 height: 110.h,
               ),
+              Positioned(
+                top: 10.h,
+                right: 110.w,
+                child: Container(
+                  width: 30.w,
+                  height: 30.h,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white30,
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      // controller.selectFavouriteIndex(index);
+                    },
+                    child: Icon(
+                      Icons.favorite_border,
+                      color: Colors.white70,
+                    ),
+                    // child: Obx(
+                    //       () => Icon(
+                    //     index == controller.getSelectedIndex()
+                    //         ? Icons.favorite
+                    //         : Icons.favorite_border,
+                    //     color: Colors.white,
+                    //   ),
+                    // ),
+                  ),
+                ),
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,

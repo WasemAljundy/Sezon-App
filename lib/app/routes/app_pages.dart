@@ -5,6 +5,8 @@ import 'package:sezon_app/app/modules/home/views/main_view.dart';
 import 'package:sezon_app/app/modules/launch_view.dart';
 import 'package:sezon_app/app/modules/login/bindings/login_binding.dart';
 import 'package:sezon_app/app/modules/login/views/login_view.dart';
+import 'package:sezon_app/app/modules/product_details/bindings/product_details_binding.dart';
+import 'package:sezon_app/app/modules/product_details/views/product_details_view.dart';
 import 'package:sezon_app/app/modules/register/bindings/register_binding.dart';
 import 'package:sezon_app/app/modules/register/views/register_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -18,6 +20,7 @@ class AppPages {
   static const LOGIN = Routes.LOGIN;
   static const REGISTER = Routes.REGISTER;
   static const REGISTER_CODE = Routes.REGISTER_CODE;
+  static const PRODUCT_DETAILS = Routes.PRODUCT_DETAILS;
 
   static final routes = [
     GetPage(
@@ -43,6 +46,11 @@ class AppPages {
       name: _Paths.REGISTER_CODE,
       page: () => const RegisterCodeView(),
       binding: RegisterCodeBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_DETAILS,
+      page: () => ProductDetailsView(),
+      binding: ProductsDetailsBinding(),
     ),
   ];
 }

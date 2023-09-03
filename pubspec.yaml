@@ -54,6 +54,7 @@ dependencies:
   cloud_firestore: ^4.8.4
   firebase_storage: ^11.2.5
   smooth_corner: ^1.1.0
+  smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
   flutter_test:
