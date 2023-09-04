@@ -8,6 +8,7 @@ import 'package:sezon_app/app/modules/home/views/nav_pages/home_nav_page.dart';
 import 'package:sezon_app/app/modules/home/views/nav_pages/shopping_nav_page.dart';
 import 'package:sezon_app/app/modules/home/views/widgets/bottom_nav_bar.dart';
 import 'package:sezon_app/app/components/custom_app_bar.dart';
+import 'package:sezon_app/app/routes/app_pages.dart';
 
 class MainView extends GetView<MainNavController> {
   const MainView({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class MainView extends GetView<MainNavController> {
           backgroundImage: AssetImage('assets/images/person1.png'),
         ),
         trailingWidget: IconButton(
-          onPressed: () {},
+          onPressed: () => Get.toNamed(AppPages.NOTIFICATION),
           icon: Icon(
             Icons.notifications,
             color: Colors.grey,
