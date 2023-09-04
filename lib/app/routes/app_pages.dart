@@ -7,6 +7,7 @@ import 'package:sezon_app/app/modules/login/bindings/login_binding.dart';
 import 'package:sezon_app/app/modules/login/views/login_view.dart';
 import 'package:sezon_app/app/modules/payment/bindings/payment_bindings.dart';
 import 'package:sezon_app/app/modules/payment/views/payment_view.dart';
+import 'package:sezon_app/app/modules/payment/views/widgets/payment_completion.dart';
 import 'package:sezon_app/app/modules/product_details/bindings/product_details_binding.dart';
 import 'package:sezon_app/app/modules/product_details/views/product_details_view.dart';
 import 'package:sezon_app/app/modules/register/bindings/register_binding.dart';
@@ -24,6 +25,7 @@ class AppPages {
   static const REGISTER_CODE = Routes.REGISTER_CODE;
   static const PRODUCT_DETAILS = Routes.PRODUCT_DETAILS;
   static const PAYMENT = Routes.PAYMENT;
+  static const PAYMENT_CONFIRMATION = Routes.PAYMENT_CONFIRMATION;
 
   static final routes = [
     GetPage(
@@ -58,6 +60,11 @@ class AppPages {
     GetPage(
       name: _Paths.PAYMENT,
       page: () => PaymentView(),
+      binding: PaymentBindings(),
+    ),
+    GetPage(
+      name: _Paths.PAYMENT_CONFIRMATION,
+      page: () => PaymentConfirmation(),
       binding: PaymentBindings(),
     ),
   ];

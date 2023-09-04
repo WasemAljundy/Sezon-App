@@ -9,6 +9,7 @@ abstract class Routes {
   static const REGISTER_CODE = _Paths.REGISTER_CODE;
   static const PRODUCT_DETAILS = _Paths.PRODUCT_DETAILS;
   static const PAYMENT = _Paths.PAYMENT;
+  static const PAYMENT_CONFIRMATION = _Paths.PAYMENT_CONFIRMATION;
 }
 
 abstract class _Paths {
@@ -20,4 +21,5 @@ abstract class _Paths {
   static const REGISTER_CODE = '/register_code';
   static const PRODUCT_DETAILS = '/product_details';
   static const PAYMENT = '/payment';
+  static const PAYMENT_CONFIRMATION = '/payment_confirmation';
 }
