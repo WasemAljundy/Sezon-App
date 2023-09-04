@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:sezon_app/app/data/models/User.dart';
+import 'package:sezon_app/app/data/models/user.dart';
 import 'package:sezon_app/app/services/api_call_status.dart';
 import 'package:sezon_app/app/services/base_client.dart';
 import 'package:sezon_app/utils/constants.dart';

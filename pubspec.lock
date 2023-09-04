@@ -392,6 +392,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  lottie:
+    dependency: transitive
+    description:
+      name: lottie
+      sha256: b8bdd54b488c54068c57d41ae85d02808da09e2bee8b8dd1f59f441e7efa60cd
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.6.0"
   matcher:
     dependency: transitive
     description:
@@ -408,6 +416,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.0"
+  material_dialogs:
+    dependency: "direct main"
+    description:
+      name: material_dialogs
+      sha256: "7828b8e70e5227c1fc2bcdf5c3ac4f22049b9ead6bae96a44ca55a4c7b8da949"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.4"
   meta:
     dependency: transitive
     description:

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:sezon_app/app/routes/app_pages.dart';
 import 'package:sezon_app/utils/colors.dart';
 
 class ButtonsWidget extends StatelessWidget {
@@ -34,7 +36,9 @@ class ButtonsWidget extends StatelessWidget {
             ),
             Expanded(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(AppPages.PAYMENT);
+                },
                 child: Text('شراء الان'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.customRed,
