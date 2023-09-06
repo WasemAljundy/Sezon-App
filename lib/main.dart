@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:sezon_app/app/data/local/my_shared_pref.dart';
+import 'package:sezon_app/app/modules/stripe_payment/stripe_keys.dart';
 import 'package:sezon_app/app/routes/app_pages.dart';
 import 'package:sezon_app/config/theme/my_theme.dart';
 import 'package:sezon_app/config/translations/localization_service.dart';
@@ -14,6 +16,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Stripe.publishableKey = ApiKeys.publishableKey;
   runApp(const MyApp());
 }
 

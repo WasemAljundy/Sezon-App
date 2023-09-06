@@ -55,6 +55,7 @@ dependencies:
   firebase_storage: ^11.2.6
   smooth_corner: ^1.1.0
   smooth_page_indicator: ^1.1.0
+  flutter_stripe: ^9.3.0
 
 dev_dependencies:
   flutter_test:
