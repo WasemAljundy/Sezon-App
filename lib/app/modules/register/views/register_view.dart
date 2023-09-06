@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:sezon_app/app/modules/login/views/widgets/app_text_field.dart';
 import 'package:sezon_app/app/modules/login/views/widgets/auth_background.dart';
 import 'package:sezon_app/app/modules/register/controllers/register_controller.dart';
-import 'package:sezon_app/app/routes/app_pages.dart';
 import 'package:sezon_app/config/translations/strings_enum.dart';
 
 class RegisterView extends GetView<RegisterController> {
@@ -63,11 +62,11 @@ class RegisterView extends GetView<RegisterController> {
                 minimumSize: Size(340.h, 50.w),
                 backgroundColor: Color(0xffD92728),
               ),
-              // onPressed: () => Get.toNamed(AppPages.REGISTER_CODE),
               onPressed: () {
-                controller.createAccount(
-                  email: controller.nameController.text,
-                  password: controller.passwordController.text,
+                controller.registerWithUsernameAndPassword(
+                  controller.nameController.text,
+                  controller.passwordController.text,
+                  controller.mobileController.text,
                 );
               },
               child: Text(Strings.register.tr),

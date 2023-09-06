@@ -5,6 +5,7 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   awesome_notifications
   firebase_core
+  smart_auth
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

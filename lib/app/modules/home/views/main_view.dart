@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:sezon_app/app/components/logout_avatar.widget.dart';
 import 'package:sezon_app/app/modules/home/controllers/main_nav.controller.dart';
 import 'package:sezon_app/app/modules/home/views/nav_pages/category_nav_page.dart';
 import 'package:sezon_app/app/modules/home/views/nav_pages/favourite_nav_page.dart';
@@ -30,10 +31,7 @@ class MainView extends GetView<MainNavController> {
             ),
           ),
         ),
-        leadingWidget: CircleAvatar(
-          backgroundColor: Colors.grey.shade300,
-          backgroundImage: AssetImage('assets/images/person1.png'),
-        ),
+        leadingWidget: LogoutAvatar(controller: controller),
         trailingWidget: IconButton(
           onPressed: () => Get.toNamed(AppPages.NOTIFICATION),
           icon: Icon(
@@ -58,3 +56,5 @@ class MainView extends GetView<MainNavController> {
     );
   }
 }
+
+

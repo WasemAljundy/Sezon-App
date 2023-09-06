@@ -2,7 +2,8 @@ import 'package:get/get.dart';
 import 'package:sezon_app/app/modules/code_check/bindings/register_code_binding.dart';
 import 'package:sezon_app/app/modules/code_check/views/register_code_view.dart';
 import 'package:sezon_app/app/modules/home/views/main_view.dart';
-import 'package:sezon_app/app/modules/launch_view.dart';
+import 'package:sezon_app/app/modules/splash/binding/launch_binding.dart';
+import 'package:sezon_app/app/modules/splash/view/launch_view.dart';
 import 'package:sezon_app/app/modules/login/bindings/login_binding.dart';
 import 'package:sezon_app/app/modules/login/views/login_view.dart';
 import 'package:sezon_app/app/modules/notifications/bindings/notification_bindings.dart';
@@ -33,7 +34,8 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.INITIAL,
-      page: () => const LaunchView(),
+      page: () => LaunchView(),
+      binding: LaunchBinding(),
     ),
     GetPage(
       name: _Paths.HOME,

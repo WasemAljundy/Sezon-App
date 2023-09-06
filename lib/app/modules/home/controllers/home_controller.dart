@@ -43,7 +43,7 @@ class HomeController extends GetxController {
       onSuccess: (response) {
         var array = response.data['data'];
         Logger().i(array.runtimeType);
-        users = array.map((jsonObject) => User.fromJson(jsonObject)).toList();
+        // users = array.map((jsonObject) => User.fromJson(jsonObject)).toList();
         apiCallStatus = ApiCallStatus.success;
         update();
         return users;
@@ -65,7 +65,7 @@ class HomeController extends GetxController {
       onSuccess: (response) {
         var array = response.data['data'];
         Logger().i(array.runtimeType);
-        users = array.map((jsonObject) => User.fromJson(jsonObject)).toList();
+        // users = array.map((jsonObject) => User.fromJson(jsonObject)).toList();
         apiCallStatus = ApiCallStatus.success;
         update();
         return users;
