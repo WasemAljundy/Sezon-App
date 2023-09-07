@@ -15,6 +15,8 @@ import 'package:sezon_app/app/modules/product_details/bindings/product_details_b
 import 'package:sezon_app/app/modules/product_details/views/product_details_view.dart';
 import 'package:sezon_app/app/modules/register/bindings/register_binding.dart';
 import 'package:sezon_app/app/modules/register/views/register_view.dart';
+import 'package:sezon_app/app/modules/user_profile/bindings/user_profile.binding.dart';
+import 'package:sezon_app/app/modules/user_profile/views/user_profile.view.dart';
 import '../modules/home/bindings/home_binding.dart';
 part 'app_routes.dart';
 
@@ -30,6 +32,7 @@ class AppPages {
   static const PAYMENT = Routes.PAYMENT;
   static const PAYMENT_CONFIRMATION = Routes.PAYMENT_CONFIRMATION;
   static const NOTIFICATION = Routes.NOTIFICATION;
+  static const USER_PROFILE = Routes.USER_PROFILE;
 
   static final routes = [
     GetPage(
@@ -76,6 +79,11 @@ class AppPages {
       name: _Paths.NOTIFICATION,
       page: () => NotificationView(),
       binding: NotificationBindings(),
+    ),
+    GetPage(
+      name: _Paths.USER_PROFILE,
+      page: () => UserProfileView(),
+      binding: UserProfileBinding(),
     ),
   ];
 }

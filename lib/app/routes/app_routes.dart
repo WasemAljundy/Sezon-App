@@ -11,6 +11,7 @@ abstract class Routes {
   static const PAYMENT = _Paths.PAYMENT;
   static const PAYMENT_CONFIRMATION = _Paths.PAYMENT_CONFIRMATION;
   static const NOTIFICATION = _Paths.NOTIFICATION;
+  static const USER_PROFILE = _Paths.USER_PROFILE;
 }
 
 abstract class _Paths {
@@ -24,4 +25,5 @@ abstract class _Paths {
   static const PAYMENT = '/payment';
   static const PAYMENT_CONFIRMATION = '/payment_confirmation';
   static const NOTIFICATION = '/notification';
+  static const USER_PROFILE = '/user_profile';
 }

@@ -56,6 +56,9 @@ dependencies:
   smooth_corner: ^1.1.0
   smooth_page_indicator: ^1.1.0
   flutter_stripe: ^9.3.0
+  image_picker: ^1.0.4
+  path_provider: ^2.0.2
+  material_dialogs: ^1.1.4
 
 dev_dependencies:
   flutter_test:

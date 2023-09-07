@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sezon_app/utils/colors.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
@@ -7,7 +8,8 @@ class AppTextField extends StatelessWidget {
     required this.controller,
     required this.labelText,
     this.hint,
-    this.prefixIcon,
+    this.suffixIcon,
+    this.function,
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
   });
@@ -16,8 +18,9 @@ class AppTextField extends StatelessWidget {
   final String? hint;
   final TextInputType keyboardType;
   final TextEditingController controller;
-  final IconData? prefixIcon;
   final bool obscureText;
+  final IconData? suffixIcon;
+  final Function()? function;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +31,9 @@ class AppTextField extends StatelessWidget {
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
         floatingLabelStyle: TextStyle(
-          color: Color(0xFFD92728),
+          color: AppColors.customRed,
           fontWeight: FontWeight.bold,
-          fontSize: 20,
+          fontSize: 20.sp,
         ),
         labelText: labelText,
         labelStyle: TextStyle(
@@ -38,6 +41,13 @@ class AppTextField extends StatelessWidget {
           fontSize: 20.sp,
         ),
         hintText: hint,
+        suffixIcon: IconButton(
+          onPressed: function,
+          icon: Icon(
+            suffixIcon,
+            color: AppColors.customRed,
+          ),
+        ),
         hintStyle: TextStyle(color: Colors.grey),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5.r),
@@ -45,12 +55,11 @@ class AppTextField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5.r),
           borderSide: BorderSide(
-            color: Color(0xFFD92728),
-            width: 1.5,
+            color: AppColors.customRed,
+            width: 1.5.w,
           ),
         ),
       ),
     );
   }
-
 }

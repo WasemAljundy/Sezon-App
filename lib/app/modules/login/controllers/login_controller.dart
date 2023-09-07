@@ -7,7 +7,6 @@ import 'package:sezon_app/app/components/custom_snackbar.dart';
 import 'package:sezon_app/app/routes/app_pages.dart';
 
 class LoginController extends GetxController {
-  final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
   late TapGestureRecognizer tapGestureRecognizer = TapGestureRecognizer()
