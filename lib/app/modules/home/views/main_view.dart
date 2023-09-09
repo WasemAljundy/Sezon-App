@@ -53,6 +53,10 @@ class MainView extends GetView<MainNavController> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.toNamed(Routes.ADMIN_ADD_PRODUCTS),
+        child: Icon(Icons.admin_panel_settings),
+      ),
     );
   }
 }

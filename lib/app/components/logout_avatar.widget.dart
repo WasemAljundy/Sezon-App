@@ -1,9 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:sezon_app/app/modules/home/controllers/main_nav.controller.dart';
 import 'package:sezon_app/app/routes/app_pages.dart';
 import 'package:sezon_app/generated/assets.dart';
@@ -50,7 +48,6 @@ class LogoutAvatar extends StatelessWidget {
       },
       child: Obx(() {
         final storedImage = controller.storedImage.value;
-        Logger().w(storedImage);
         return storedImage != null
             ? CircleAvatar(
                 backgroundColor: Colors.grey.shade300,

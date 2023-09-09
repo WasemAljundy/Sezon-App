@@ -23,7 +23,8 @@ class MainNavController extends GetxController {
 
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
-    Get.offNamed(AppPages.LOGIN);
+    // Get.offNamed(AppPages.LOGIN);
+    Get.offAllNamed(AppPages.LOGIN);
   }
 
   Future<List<Reference>> read() async {
@@ -36,7 +37,6 @@ class MainNavController extends GetxController {
 
   Future<void> loadAndSetImage() async {
     final imageReferences = await read();
-    Logger().w('imageReferences ${imageReferences}');
     if (imageReferences.isNotEmpty) {
       final latestImageReference = imageReferences.last;
       final imageBytes = await latestImageReference.getData();
@@ -44,7 +44,6 @@ class MainNavController extends GetxController {
       final imagePath = "${tempDir.path}/${latestImageReference.name}";
       File(imagePath).writeAsBytesSync(imageBytes!);
       storedImage.value = XFile(imagePath);
-      Logger().w('imagePath ${imagePath}');
     }
   }
 

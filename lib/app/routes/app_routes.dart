@@ -12,6 +12,8 @@ abstract class Routes {
   static const PAYMENT_CONFIRMATION = _Paths.PAYMENT_CONFIRMATION;
   static const NOTIFICATION = _Paths.NOTIFICATION;
   static const USER_PROFILE = _Paths.USER_PROFILE;
+
+  static const ADMIN_ADD_PRODUCTS = _Paths.ADMIN_ADD_PRODUCTS;
 }
 
 abstract class _Paths {
@@ -26,4 +28,5 @@ abstract class _Paths {
   static const PAYMENT_CONFIRMATION = '/payment_confirmation';
   static const NOTIFICATION = '/notification';
   static const USER_PROFILE = '/user_profile';
+  static const ADMIN_ADD_PRODUCTS = '/admin_add_product';
 }

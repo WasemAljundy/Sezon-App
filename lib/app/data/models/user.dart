@@ -3,6 +3,7 @@ class User {
   late String email;
   late String username;
   late String mobile;
+  late String role;
 
 
   User();
@@ -11,6 +12,7 @@ class User {
     email = documentMap['email'];
     username = documentMap['username'];
     mobile = documentMap['mobile'];
+    role = documentMap['role'];
   }
 
   Map<String, dynamic> toMap() {
@@ -18,6 +20,7 @@ class User {
     map['email'] = email;
     map['username'] = username;
     map['mobile'] = mobile;
+    map['role'] = role;
     return map;
   }
 }

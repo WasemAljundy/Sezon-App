@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,9 @@ class LoginController extends GetxController {
   final passwordController = TextEditingController();
   late TapGestureRecognizer tapGestureRecognizer = TapGestureRecognizer()
     ..onTap = navigateToRegisterScreen;
+
+  String role = 'user';
+
 
   Future<User?> signInWithUsernameAndPassword(
       String username, String password) async {
@@ -32,9 +36,24 @@ class LoginController extends GetxController {
     return null;
   }
 
+
+  void _checkRole() async {
+    User user = FirebaseAuth.instance.currentUser!;
+    final DocumentSnapshot snap = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+
+    role = snap['role'];
+
+    if(role == 'user'){
+      Logger().w('THIS IS USER AUTH');
+    } else if(role == 'admin'){
+      Logger().w('THIS IS ADMIN AUTH');
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();
+    _checkRole();
   }
 
   void navigateToRegisterScreen() {

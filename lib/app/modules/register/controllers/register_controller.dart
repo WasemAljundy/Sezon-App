@@ -34,6 +34,7 @@ class RegisterController extends GetxController {
           'username': username,
           'Password': password,
           'mobile': mobile,
+          'role': 'user',
         });
         Get.toNamed(AppPages.REGISTER_CODE);
         CustomSnackBar.showCustomSnackBar(

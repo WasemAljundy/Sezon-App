@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:sezon_app/app/data/repositories/admin/products/bindings/admin_products.bindings.dart';
+import 'package:sezon_app/app/data/repositories/admin/products/views/admin_products.view.dart';
 import 'package:sezon_app/app/modules/code_check/bindings/register_code_binding.dart';
 import 'package:sezon_app/app/modules/code_check/views/register_code_view.dart';
 import 'package:sezon_app/app/modules/home/views/main_view.dart';
@@ -84,6 +86,11 @@ class AppPages {
       name: _Paths.USER_PROFILE,
       page: () => UserProfileView(),
       binding: UserProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_ADD_PRODUCTS,
+      page: () => AdminProductsView(),
+      binding: AdminProductsBindings(),
     ),
   ];
 }
