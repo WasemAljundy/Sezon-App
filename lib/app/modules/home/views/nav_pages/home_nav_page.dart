@@ -20,11 +20,11 @@ class HomeNavPage extends GetView<HomeController> {
             SizedBox(height: 40.h),
             CategoryItemTitle(categoryTitle: 'الفئات'),
             SizedBox(height: 15.h),
-            CategoryItemsList(),
+            CategoryItemsList(controller: controller),
             SizedBox(height: 30.h),
             CategoryItemTitle(categoryTitle: 'المنتجات'),
             SizedBox(height: 10.h),
-            ProductItemsList(),
+            ProductItemsList(controller: controller,),
           ],
         ),
       );

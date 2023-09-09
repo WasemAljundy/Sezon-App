@@ -20,6 +20,7 @@ class AdminProductsController extends GetxController {
   final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
   final ImagePicker imagePicker = ImagePicker();
   XFile? pickedFile;
+  String? imageUrl;
   RxString selectedCategory = 'accessories'.obs;
 
 
@@ -35,6 +36,7 @@ class AdminProductsController extends GetxController {
       'product_name': productNameController.text,
       'product_description': productDescriptionController.text,
       'product_price': productPriceController.text,
+      'product_image': imageUrl,
       'category_name' : selectedCategory.value,
     });
   }
@@ -73,11 +75,12 @@ class AdminProductsController extends GetxController {
     }
   }
 
-
   Stream<TaskSnapshot> uploadImage({required String path}) async* {
     UploadTask uploadTask = _firebaseStorage
         .ref('products/${DateTime.now()}_image')
         .putFile(File(path));
+    final TaskSnapshot snapshot = await uploadTask.whenComplete(() => null);
+    imageUrl = await snapshot.ref.getDownloadURL();
     yield* uploadTask.snapshotEvents;
   }
 
@@ -85,6 +88,7 @@ class AdminProductsController extends GetxController {
     productNameController.text = '';
     productDescriptionController.text = '';
     productPriceController.text = '';
+    imageController.text = '';
   }
 
 

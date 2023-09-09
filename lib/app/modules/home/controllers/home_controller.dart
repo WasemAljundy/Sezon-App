@@ -1,17 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:sezon_app/app/data/models/user.dart';
-import 'package:sezon_app/app/services/api_call_status.dart';
-import 'package:sezon_app/app/services/base_client.dart';
-import 'package:sezon_app/utils/constants.dart';
 
 class HomeController extends GetxController {
-
   late List<dynamic> users;
   final formKey = GlobalKey<FormState>();
   final editController = TextEditingController();
   final tabIndex = 0.obs;
+  RxBool isLoading = false.obs;
+  List<Map<String, dynamic>> categoriesList = [];
+  List<Map<String, dynamic>> productsList = [];
 
   void changeTabIndex(int index) {
     tabIndex.value = index;
@@ -30,58 +29,44 @@ class HomeController extends GetxController {
     return 'بدون عنوان';
   }
 
-  ApiCallStatus apiCallStatus = ApiCallStatus.holding;
-
-  getUsers() async {
-    await BaseClient.safeApiCall(
-      Constants.users,
-      RequestType.get,
-      onLoading: () {
-        apiCallStatus = ApiCallStatus.loading;
-        update();
-      },
-      onSuccess: (response) {
-        var array = response.data['data'];
-        Logger().i(array.runtimeType);
-        // users = array.map((jsonObject) => User.fromJson(jsonObject)).toList();
-        apiCallStatus = ApiCallStatus.success;
-        update();
-        return users;
-      },
-      onError: (error) {
-        // show error message to user
-        BaseClient.handleApiError(error);
-        apiCallStatus = ApiCallStatus.error;
-        update();
-      },
-    );
+  Future<List<Map<String, dynamic>>> getCategoriesList() async {
+    isLoading.value = true;
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('categories').get();
+      for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
+        Map<String, dynamic> categoryData =
+        (documentSnapshot.data() as Map<String, dynamic>);
+        categoriesList.add(categoryData);
+        isLoading.value = false;
+      }
+    } catch (e) {
+      Logger().e(e);
+    }
+    return categoriesList;
   }
 
-  getUserBySearch(String name) async {
-    await BaseClient.safeApiCall(
-      Constants.searchUser,
-      RequestType.post,
-      queryParameters: {'first_name': name},
-      onSuccess: (response) {
-        var array = response.data['data'];
-        Logger().i(array.runtimeType);
-        // users = array.map((jsonObject) => User.fromJson(jsonObject)).toList();
-        apiCallStatus = ApiCallStatus.success;
-        update();
-        return users;
-      },
-      onError: (error) {
-        if (name.isEmpty) {
-          return users;
-        }
-        update();
-      },
-    );
+  Future<List<Map<String, dynamic>>> getProductsList() async {
+    isLoading.value = true;
+    try {
+      QuerySnapshot querySnapshot =
+      await FirebaseFirestore.instance.collection('products').get();
+      for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
+        Map<String, dynamic> productData =
+        (documentSnapshot.data() as Map<String, dynamic>);
+        productsList.add(productData);
+        isLoading.value = false;
+      }
+    } catch (e) {
+      Logger().e(e);
+    }
+    return productsList;
   }
 
   @override
   void onInit() {
-    // getUsers();
+    getCategoriesList();
+    getProductsList();
     super.onInit();
   }
 }
