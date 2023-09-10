@@ -20,25 +20,37 @@ class AdminProductsController extends GetxController {
   final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
   final ImagePicker imagePicker = ImagePicker();
   XFile? pickedFile;
-  String? imageUrl;
+  late String imageUrl;
   RxString selectedCategory = 'accessories'.obs;
-
 
   Stream<QuerySnapshot> getCategories() async* {
     yield* FirebaseFirestore.instance.collection('categories').snapshots();
   }
 
   Future<void> addProduct() async {
-    await FirebaseFirestore.instance
-        .collection('products')
-        .doc()
-        .set({
-      'product_name': productNameController.text,
-      'product_description': productDescriptionController.text,
-      'product_price': productPriceController.text,
-      'product_image': imageUrl,
-      'category_name' : selectedCategory.value,
-    });
+    if (checkData()) {
+      try {
+        imageUrl = await uploadImage(path: pickedFile!.path);
+      } catch (e) {
+        CustomSnackBar.showCustomSnackBar(
+          title: 'حدث خطأ',
+          message: 'لم يتم رفع الصورة يرجى اعادة المحاولة',
+        );
+        return;
+      }
+      await FirebaseFirestore.instance.collection('products').doc().set({
+        'product_name': productNameController.text,
+        'product_description': productDescriptionController.text,
+        'product_price': productPriceController.text,
+        'product_image': imageUrl,
+        'category_name': selectedCategory.value,
+      });
+      clearTextFields();
+      CustomSnackBar.showCustomSnackBar(
+        title: 'تمت الاضافة',
+        message: 'تم اضافة المنتج الخاص بك بنجاح ',
+      );
+    }
   }
 
   bool checkData() {
@@ -56,32 +68,12 @@ class AdminProductsController extends GetxController {
     }
   }
 
-  Future<void> performAdding() async {
-    if (checkData()) {
-      await addProduct();
-      await uploadImage(path: pickedFile!.path).listen((event) {
-        if (event.state == TaskState.error) {
-          CustomSnackBar.showCustomSnackBar(
-            title: 'حدث خطأ',
-            message: 'لم يتم رفع الصورة يرجى اعادة المحاولة',
-          );
-        }
-      });
-      clearTextFields();
-      CustomSnackBar.showCustomSnackBar(
-        title: 'تمت الاضافة',
-        message: 'تم اضافة المنتج الخاص بك بنجاح ',
-      );
-    }
-  }
-
-  Stream<TaskSnapshot> uploadImage({required String path}) async* {
+  Future<String> uploadImage({required String path}) async {
     UploadTask uploadTask = _firebaseStorage
-        .ref('products/${DateTime.now()}_image')
+        .ref('product_images/${DateTime.now()}_image')
         .putFile(File(path));
-    final TaskSnapshot snapshot = await uploadTask.whenComplete(() => null);
-    imageUrl = await snapshot.ref.getDownloadURL();
-    yield* uploadTask.snapshotEvents;
+    await uploadTask;
+    return await uploadTask.snapshot.ref.getDownloadURL();
   }
 
   void clearTextFields() {
@@ -90,8 +82,6 @@ class AdminProductsController extends GetxController {
     productPriceController.text = '';
     imageController.text = '';
   }
-
-
 
   void selectPicture() {
     Dialogs.materialDialog(
@@ -149,10 +139,6 @@ class AdminProductsController extends GetxController {
       Get.back();
     }
   }
-
-
-
-
 
   @override
   void onInit() {

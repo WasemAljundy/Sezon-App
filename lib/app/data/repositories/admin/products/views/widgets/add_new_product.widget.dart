@@ -84,7 +84,7 @@ class AddNewProduct extends StatelessWidget {
           }),
           SizedBox(height: 30.h),
           ElevatedButton(
-            onPressed: () => controller.performAdding(),
+            onPressed: () => controller.addProduct(),
             child: Text('اضافة'),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.customRed,

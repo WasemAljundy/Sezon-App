@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:logger/logger.dart';
 import 'package:sezon_app/app/modules/home/controllers/shopping_controller.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sezon_app/app/routes/app_pages.dart';
@@ -23,7 +22,6 @@ class MainNavController extends GetxController {
 
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
-    // Get.offNamed(AppPages.LOGIN);
     Get.offAllNamed(AppPages.LOGIN);
   }
 
