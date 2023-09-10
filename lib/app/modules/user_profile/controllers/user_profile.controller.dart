@@ -137,7 +137,7 @@ class UserProfileController extends GetxController {
   }
 
   Future<List<Reference>> read() async {
-    ListResult listResult = await _firebaseStorage.ref('images').listAll();
+    ListResult listResult = await _firebaseStorage.ref('users_images').listAll();
     if (listResult.items.isNotEmpty) {
       return listResult.items;
     }
@@ -158,7 +158,7 @@ class UserProfileController extends GetxController {
       await delete(path: reference.fullPath);
     }
     UploadTask uploadTask = _firebaseStorage
-        .ref('images/${DateTime.now()}_image')
+        .ref('users_images/${DateTime.now()}_image')
         .putFile(File(path));
     yield* uploadTask.snapshotEvents;
   }

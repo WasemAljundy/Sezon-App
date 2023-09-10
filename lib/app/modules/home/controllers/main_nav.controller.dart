@@ -26,7 +26,7 @@ class MainNavController extends GetxController {
   }
 
   Future<List<Reference>> read() async {
-    ListResult listResult = await _firebaseStorage.ref('images').listAll();
+    ListResult listResult = await _firebaseStorage.ref('users_images').listAll();
     if (listResult.items.isNotEmpty) {
       return listResult.items;
     }
