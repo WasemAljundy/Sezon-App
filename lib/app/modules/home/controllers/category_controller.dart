@@ -65,7 +65,6 @@ class CategoryController extends GetxController {
         Map<String, dynamic> productData =
         (documentSnapshot.data() as Map<String, dynamic>);
         productsList.add(productData);
-        Logger().w('productsList ${productsList.length}');
       }
 
       isLoading.value = false;

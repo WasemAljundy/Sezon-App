@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:sezon_app/app/modules/home/controllers/category_controller.dart';
 
 class CategoryNavList extends StatelessWidget {
@@ -27,7 +26,6 @@ class CategoryNavList extends StatelessWidget {
             itemCount: controller.categoriesList.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
-              return Obx(() {
                 return InkWell(
                   onTap: () {
                     controller.changeTabIndex(index);
@@ -81,7 +79,6 @@ class CategoryNavList extends StatelessWidget {
                     ],
                   ),
                 );
-              });
             },
           ),
         ),

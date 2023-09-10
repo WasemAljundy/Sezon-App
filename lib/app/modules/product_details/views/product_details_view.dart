@@ -13,54 +13,53 @@ import 'package:sezon_app/utils/colors.dart';
 class ProductDetailsView extends GetView<ProductDetailsController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: ProductAppBar(),
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          ImagesPageView(controller: controller),
-          SizedBox(height: 15.h),
-          PageIndicator(controller: controller),
-          SizedBox(height: 30.h),
-          Text(
-            'صواني مطرزة تطريز فلسطيني',
-            style: TextStyle(
-              fontSize: 17.sp,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 10.h),
-          Text(
-            '130 ر.س',
-            style: TextStyle(
-              fontSize: 17.sp,
-              color: AppColors.customRed,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 10.h),
-          Text(
-            'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة',
-            maxLines: 4,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 15.sp,
-            ),
-          ),
-          SizedBox(height: 20.h),
-          HeaderTitle(),
-          SizedBox(height: 20.h),
-          RelatedProducts(controller: controller),
-          SizedBox(height: 20.h),
-          ButtonsWidget(),
-        ],
-      ),
-    );
+    return Obx(() {
+      return Scaffold(
+        appBar: ProductAppBar(),
+        body: controller.isLoading.value
+            ? Center(child: CircularProgressIndicator())
+            : ListView(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                physics: NeverScrollableScrollPhysics(),
+                children: [
+                  ImagesPageView(controller: controller),
+                  SizedBox(height: 15.h),
+                  PageIndicator(controller: controller),
+                  SizedBox(height: 30.h),
+                  Text(
+                    controller.product['product_name'],
+                    style: TextStyle(
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Text(
+                    controller.product['product_price'],
+                    style: TextStyle(
+                      fontSize: 17.sp,
+                      color: AppColors.customRed,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Text(
+                    controller.product['product_description'],
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 15.sp,
+                    ),
+                  ),
+                  SizedBox(height: 20.h),
+                  HeaderTitle(),
+                  SizedBox(height: 20.h),
+                  RelatedProducts(controller: controller),
+                  SizedBox(height: 20.h),
+                  ButtonsWidget(),
+                ],
+              ),
+      );
+    });
   }
 }
-
-
-
-
-

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sezon_app/app/modules/product_details/controllers/product_details_controller.dart';
-import 'package:sezon_app/generated/assets.dart';
 
 class ImagesPageView extends StatelessWidget {
   const ImagesPageView({
@@ -20,8 +19,8 @@ class ImagesPageView extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         onPageChanged: (index) => controller.changePage(index),
         itemBuilder: (context, index) {
-          return Image.asset(
-            Assets.imagesLogoBackground,
+          return Image.network(
+            controller.product['product_image'],
             fit: BoxFit.cover,
           );
         },
