@@ -13,11 +13,9 @@ class CategoryNavPage extends GetView<CategoryController> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           CategoryNavList(controller: controller),
-          CategoryProducts(),
+          CategoryProducts(controller: controller),
         ],
       ),
     );
   }
 }
-
-
