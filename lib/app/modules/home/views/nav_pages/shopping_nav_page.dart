@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sezon_app/app/modules/home/controllers/shopping_controller.dart';
+import 'package:sezon_app/app/modules/home/views/widgets/product_cart_list.widget.dart';
 import 'package:sezon_app/utils/colors.dart';
+
 
 class ShoppingNavPage extends GetView<ShoppingController> {
   @override
@@ -30,43 +32,15 @@ class ShoppingNavPage extends GetView<ShoppingController> {
               () => IndexedStack(
                 index: controller.selectedIndex.value,
                 children: [
-                  ListView.builder(
-                    itemCount: 8,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        margin: EdgeInsets.symmetric(
-                          horizontal: 20.w,
-                          vertical: 10.h,
-                        ),
-                        child: ListTile(
-                          onTap: () {},
-                          leading: Image.network(
-                            'https://crewelghoul.com/wp-content/uploads/2022/07/butterfly-embroidery-1.jpg.webp',
-                            fit: BoxFit.fill,
-                            width: 80.w,
-                          ),
-                          title: Text(
-                            'خزف ملون صنع يدوي',
-                            style: TextStyle(
-                              fontSize: 17.sp,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          subtitle: Text(
-                            'هذا النص هو مثال لنص يمكن ان يستبدل توليد هذا النص من مولد النص العربي',
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+                  ProductCartList(controller: controller),
                   Center(
-                    child: Text('Tab 2 Content'),
+                    child: Text(
+                      'لا توجد طلبات تم تسليمها 🥲',
+                      style: TextStyle(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -77,3 +51,4 @@ class ShoppingNavPage extends GetView<ShoppingController> {
     );
   }
 }
+

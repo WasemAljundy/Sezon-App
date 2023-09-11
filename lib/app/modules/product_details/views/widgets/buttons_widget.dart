@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:sezon_app/app/modules/product_details/controllers/product_details_controller.dart';
 import 'package:sezon_app/app/routes/app_pages.dart';
 import 'package:sezon_app/utils/colors.dart';
 
 class ButtonsWidget extends StatelessWidget {
   const ButtonsWidget({
     super.key,
+    required this.controller,
   });
+
+  final ProductDetailsController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +26,7 @@ class ButtonsWidget extends StatelessWidget {
           children: [
             Expanded(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => controller.addProductToCard(),
                 child: Text(
                   'إضافة إلى المفضلة',
                   style: TextStyle(color: AppColors.customRed),

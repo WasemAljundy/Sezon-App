@@ -59,6 +59,7 @@ dependencies:
   image_picker: ^1.0.4
   path_provider: ^2.0.2
   material_dialogs: ^1.1.4
+  flutter_slidable: ^3.0.0
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
       return Scaffold(
         appBar: ProductAppBar(),
         body: controller.isLoading.value
-            ? Center(child: CircularProgressIndicator())
+            ? Center(child: CupertinoActivityIndicator())
             : ListView(
                 padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
                 physics: NeverScrollableScrollPhysics(),
@@ -56,7 +57,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                   SizedBox(height: 20.h),
                   RelatedProducts(controller: controller),
                   SizedBox(height: 20.h),
-                  ButtonsWidget(),
+                  ButtonsWidget(controller: controller),
                 ],
               ),
       );
