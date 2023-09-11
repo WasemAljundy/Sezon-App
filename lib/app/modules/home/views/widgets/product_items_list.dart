@@ -15,8 +15,7 @@ class ProductItemsList extends StatelessWidget {
     return Obx(() {
       if (controller.isLoading.value) {
         return CupertinoActivityIndicator();
-      }
-      else if (controller.productsList.isEmpty) {
+      } else if (controller.productsList.isEmpty) {
         return Center(
           child: Text(
             'لا توجد عناصر لعرضها 🙁',
@@ -68,20 +67,14 @@ class ProductItemsList extends StatelessWidget {
                       ),
                       child: InkWell(
                         onTap: () {
-                          // controller.selectFavouriteIndex(index);
+                          controller.performFavourite(
+                              controller.productsList[index]['product_name']);
                         },
                         child: Icon(
-                          Icons.favorite_border,
+                          controller.productsList[index]['is_favourite'] == true ?
+                          Icons.favorite : Icons.favorite_border,
                           color: Colors.white70,
                         ),
-                        // child: Obx(
-                        //       () => Icon(
-                        //     index == controller.getSelectedIndex()
-                        //         ? Icons.favorite
-                        //         : Icons.favorite_border,
-                        //     color: Colors.white,
-                        //   ),
-                        // ),
                       ),
                     ),
                   ),

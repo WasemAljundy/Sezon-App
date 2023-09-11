@@ -44,6 +44,7 @@ class AdminProductsController extends GetxController {
         'product_price': productPriceController.text,
         'product_image': imageUrl,
         'category_name': selectedCategory.value,
+        'is_favourite': false,
       });
       clearTextFields();
       CustomSnackBar.showCustomSnackBar(

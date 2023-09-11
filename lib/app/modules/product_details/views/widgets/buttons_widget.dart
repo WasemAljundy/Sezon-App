@@ -26,9 +26,9 @@ class ButtonsWidget extends StatelessWidget {
           children: [
             Expanded(
               child: ElevatedButton(
-                onPressed: () => controller.addProductToCard(),
+                onPressed: () => controller.addProductToCart(),
                 child: Text(
-                  'إضافة إلى المفضلة',
+                  'إضافة إلى سلة الطلبات',
                   style: TextStyle(color: AppColors.customRed),
                 ),
                 style: ElevatedButton.styleFrom(

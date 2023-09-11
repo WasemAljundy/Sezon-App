@@ -58,7 +58,7 @@ class ProductDetailsController extends GetxController {
     }
   }
 
-  void addProductToCard() async {
+  void addProductToCart() async {
     isLoading.value = true;
     var userId = FirebaseAuth.instance.currentUser!.uid;
     final cartRef =
@@ -72,6 +72,7 @@ class ProductDetailsController extends GetxController {
             'product_price': product['product_price'],
             'product_image': product['product_image'],
             'category_name': product['category_name'],
+            'is_favourite': false,
           }
         ])
       }, SetOptions(merge: true));

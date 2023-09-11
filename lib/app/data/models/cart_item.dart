@@ -4,6 +4,7 @@ class CartItem {
   late String product_price;
   late String product_image;
   late String category_name;
+  late bool is_favourite;
 
   CartItem();
 
@@ -14,6 +15,7 @@ class CartItem {
     product_price = documentMap['product_price'];
     product_image = documentMap['product_image'];
     category_name = documentMap['category_name'];
+    is_favourite = documentMap['is_favourite'];
   }
 
   Map<String, dynamic> toMap() {
@@ -23,6 +25,7 @@ class CartItem {
     map['product_price'] = product_price;
     map['product_image'] = product_image;
     map['category_name'] = category_name;
+    map['is_favourite'] = is_favourite;
     return map;
   }
 }
