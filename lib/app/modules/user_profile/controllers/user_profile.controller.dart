@@ -107,6 +107,7 @@ class UserProfileController extends GetxController {
   }
 
   Future<void> updateUser() async {
+    String role = await getUserInfo();
     await FirebaseFirestore.instance
         .collection('users')
         .doc(_firebaseAuth.currentUser!.uid)
@@ -114,6 +115,7 @@ class UserProfileController extends GetxController {
       'username': '${userNameController.text}@email.com',
       'Password': passwordController.text,
       'mobile': mobileController.text,
+      'role': role,
     });
   }
 
@@ -137,7 +139,8 @@ class UserProfileController extends GetxController {
   }
 
   Future<List<Reference>> read() async {
-    ListResult listResult = await _firebaseStorage.ref('users_images').listAll();
+    ListResult listResult =
+        await _firebaseStorage.ref('users_images').listAll();
     if (listResult.items.isNotEmpty) {
       return listResult.items;
     }
@@ -169,14 +172,43 @@ class UserProfileController extends GetxController {
     mobileController.text = '';
   }
 
+  Future<String> getUserInfo() async {
+    try {
+      final user = _firebaseAuth.currentUser;
+      if (user != null) {
+        final userDoc = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user.uid)
+            .get();
+        if (userDoc.exists) {
+          final data = userDoc.data();
+          if (data != null && data.containsKey('role')) {
+            final role = data['role'];
+            print('User Role: $role');
+            return role.toString();
+          } else {
+            print('User document does not contain a "role" field.');
+            return 'user';
+          }
+        } else {
+          print('User document does not exist.');
+          return 'user';
+        }
+      } else {
+        print('No user is currently signed in.');
+        return '';
+      }
+    } catch (error) {
+      print('Error fetching user info: $error');
+      return '';
+    }
+  }
+
+
   @override
   void onInit() {
     read();
+    getUserInfo();
     super.onInit();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 }
