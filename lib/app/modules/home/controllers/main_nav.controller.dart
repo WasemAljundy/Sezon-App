@@ -22,7 +22,15 @@ class MainNavController extends GetxController {
 
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
+    disposeControllers();
     Get.offAllNamed(AppPages.LOGIN);
+  }
+
+  void disposeControllers() {
+    homeController.dispose();
+    categoryController.dispose();
+    shoppingController.dispose();
+    favouriteController.dispose();
   }
 
   Future<List<Reference>> read() async {

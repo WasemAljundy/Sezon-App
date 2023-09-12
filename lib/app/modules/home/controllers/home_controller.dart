@@ -15,6 +15,7 @@ class HomeController extends GetxController {
   RxBool isLoading = false.obs;
   List<Map<String, dynamic>> categoriesList = [];
   RxList<dynamic> productsList = [].obs;
+  RxList<dynamic> searchedProducts = RxList<Map<String, dynamic>>([]);
 
   void changeTabIndex(int index) {
     tabIndex.value = index;
@@ -37,6 +38,22 @@ class HomeController extends GetxController {
     return 'بدون عنوان';
   }
 
+  Future<dynamic> searchProducts(String keyword) async {
+    if (keyword.isNotEmpty) {
+      final QuerySnapshot query = await FirebaseFirestore.instance
+          .collection('products')
+          .where('product_name', isGreaterThanOrEqualTo: keyword)
+          .where('product_name', isLessThanOrEqualTo: keyword + '\uf8ff')
+          .get();
+
+      searchedProducts.value =
+          query.docs.map((doc) => doc.data() as Map<String, dynamic>).toList();
+      return searchedProducts;
+    } else {
+      searchedProducts.clear();
+    }
+  }
+
   Future<List<Map<String, dynamic>>> getCategoriesList() async {
     isLoading.value = true;
     try {
@@ -44,7 +61,7 @@ class HomeController extends GetxController {
           await FirebaseFirestore.instance.collection('categories').get();
       for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
         Map<String, dynamic> categoryData =
-        (documentSnapshot.data() as Map<String, dynamic>);
+            (documentSnapshot.data() as Map<String, dynamic>);
         categoriesList.add(categoryData);
         isLoading.value = false;
       }
@@ -58,10 +75,10 @@ class HomeController extends GetxController {
     isLoading.value = true;
     try {
       QuerySnapshot querySnapshot =
-      await FirebaseFirestore.instance.collection('products').get();
+          await FirebaseFirestore.instance.collection('products').get();
       for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
         Map<String, dynamic> productData =
-        (documentSnapshot.data() as Map<String, dynamic>);
+            (documentSnapshot.data() as Map<String, dynamic>);
         productsList.add(productData);
         isLoading.value = false;
       }
@@ -75,10 +92,11 @@ class HomeController extends GetxController {
     isLoading.value = true;
     try {
       CollectionReference collection =
-      FirebaseFirestore.instance.collection('products');
+          FirebaseFirestore.instance.collection('products');
 
-      QuerySnapshot querySnapshot =
-      await collection.where('product_name', isEqualTo: selectedProduct.value).get();
+      QuerySnapshot querySnapshot = await collection
+          .where('product_name', isEqualTo: selectedProduct.value)
+          .get();
 
       if (querySnapshot.docs.isNotEmpty) {
         isLoading.value = false;
@@ -129,7 +147,7 @@ class HomeController extends GetxController {
 
           // Update the is_favourite property in productsList
           final productIndex = productsList.indexWhere(
-                (product) => product['product_name'] == productName,
+            (product) => product['product_name'] == productName,
           );
           if (productIndex != -1) {
             productsList[productIndex]['is_favourite'] = true;
@@ -163,7 +181,8 @@ class HomeController extends GetxController {
           // Handle the case where the product with the given name doesn't exist
           CustomSnackBar.showCustomErrorSnackBar(
             title: 'المنتج غير موجود',
-            message: 'عذرًا، المنتج الذي تحاول اضافته غير موجود في قاعدة البيانات.',
+            message:
+                'عذرًا، المنتج الذي تحاول اضافته غير موجود في قاعدة البيانات.',
           );
         }
       } catch (e) {
@@ -181,16 +200,11 @@ class HomeController extends GetxController {
     }
   }
 
-
-
-
-
   void performFavourite(String product_name) async {
     setFavouriteProduct(product_name);
     await fetchProduct();
     addProductToFavourites();
   }
-
 
   @override
   void onInit() {

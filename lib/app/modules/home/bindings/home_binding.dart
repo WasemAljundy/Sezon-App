@@ -10,23 +10,23 @@ class MainBinding extends Bindings {
   void dependencies() {
     Get.put<HomeController>(
       HomeController(),
-      permanent: true,
+      // permanent: true,
     );
     Get.put<CategoryController>(
       CategoryController(),
-      permanent: true,
+      // permanent: true,
     );
     Get.put<ShoppingController>(
       ShoppingController(),
-      permanent: true,
+      // permanent: true,
     );
     Get.put<FavouriteController>(
       FavouriteController(),
-      permanent: true,
+      // permanent: true,
     );
     Get.put<MainNavController>(
       MainNavController(),
-      permanent: true,
+      // permanent: true,
     );
   }
 }
