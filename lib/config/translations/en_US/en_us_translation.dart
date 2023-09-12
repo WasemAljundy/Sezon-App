@@ -26,6 +26,15 @@ const Map<String, String> enUs = {
   Strings.newAccount : "New Account",
   Strings.haveAccount : "Already Have Account?",
 
+
+  Strings.createdSuccessfully : "Created Successfully",
+  Strings.verifyMobile : "Account Created, Please Verify your mobile",
+  Strings.passwordDidNotMatch : "Password didn't match",
+  Strings.checkConfirmationPass : "Please check your confirmation password ",
+  Strings.errorOccurred : "Error Occurred",
+  Strings.verifySuccess : "Verify Success",
+  Strings.verifySuccessMsg : "Phone verification is successfully completed",
+
   Strings.goodMorning : 'Good morning',
   Strings.name : 'Wasem Aljundy',
   Strings.attendanceRegistration : 'Attendance Registration',

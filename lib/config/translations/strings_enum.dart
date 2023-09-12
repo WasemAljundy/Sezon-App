@@ -28,6 +28,14 @@ class Strings {
 
   static const String haveAccount = "Already Have Account?";
 
+  static const String createdSuccessfully = 'Created Successfully';
+  static const String verifyMobile = 'Account Created, Please Verify your mobile';
+  static const String passwordDidNotMatch = "Password didn't match";
+  static const String checkConfirmationPass = 'Please check your confirmation password ';
+  static const String errorOccurred = 'Error Occurred';
+
+  static const String verifySuccess = 'Verify Success';
+  static const String verifySuccessMsg = 'Phone verification is successfully completed';
 
   static const String goodMorning = 'good morning';
   static const String name = 'name';

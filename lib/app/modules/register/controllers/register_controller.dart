@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:sezon_app/app/components/custom_snackbar.dart';
 import 'package:sezon_app/app/routes/app_pages.dart';
+import 'package:sezon_app/config/translations/strings_enum.dart';
 
 class RegisterController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -38,14 +39,14 @@ class RegisterController extends GetxController {
         });
         Get.toNamed(AppPages.REGISTER_CODE);
         CustomSnackBar.showCustomSnackBar(
-          title: 'Created Successfully',
-          message: 'Account Created, Please Verify your mobile',
+          title: Strings.createdSuccessfully.tr,
+          message: Strings.verifyMobile.tr,
         );
         return true;
       }
     } catch (e) {
       CustomSnackBar.showCustomErrorSnackBar(
-        title: 'Error Occurred',
+        title: Strings.errorOccurred.tr,
         message: e.toString(),
       );
       Logger().w(e);
@@ -62,8 +63,8 @@ class RegisterController extends GetxController {
       return true;
     }
     CustomSnackBar.showCustomErrorSnackBar(
-      title: "Password didn't match",
-      message: 'Please check your confirmation password ',
+      title: Strings.passwordDidNotMatch.tr,
+      message: Strings.checkConfirmationPass.tr,
     );
     return false;
   }

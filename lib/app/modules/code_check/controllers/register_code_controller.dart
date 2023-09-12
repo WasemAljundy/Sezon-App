@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:sezon_app/app/components/custom_snackbar.dart';
 import 'package:sezon_app/app/routes/app_pages.dart';
+import 'package:sezon_app/config/translations/strings_enum.dart';
 
 class RegisterCodeController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -72,8 +73,8 @@ class RegisterCodeController extends GetxController {
       await _auth.signInWithCredential(credential);
       Get.offNamed(AppPages.HOME);
       CustomSnackBar.showCustomSnackBar(
-        title: 'Verify Success',
-        message: 'Phone verification is successfully completed',
+        title: Strings.verifySuccess.tr,
+        message: Strings.verifySuccessMsg.tr,
       );
     } catch (e) {
       isLoading.value = false;

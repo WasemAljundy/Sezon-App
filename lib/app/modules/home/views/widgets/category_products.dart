@@ -92,22 +92,9 @@ class CategoryProducts extends StatelessWidget {
                                       shape: BoxShape.circle,
                                       color: Colors.white30,
                                     ),
-                                    child: InkWell(
-                                      onTap: () {
-                                        // controller.selectFavouriteIndex(index);
-                                      },
-                                      child: Icon(
-                                        Icons.favorite_border,
-                                        color: Colors.white60,
-                                      ),
-                                      // child: Obx(
-                                      //       () => Icon(
-                                      //     index == controller.getSelectedIndex()
-                                      //         ? Icons.favorite
-                                      //         : Icons.favorite_border,
-                                      //     color: Colors.white,
-                                      //   ),
-                                      // ),
+                                    child: Icon(
+                                      Icons.favorite_border,
+                                      color: Colors.white60,
                                     ),
                                   ),
                                 ),

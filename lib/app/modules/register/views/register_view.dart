@@ -31,7 +31,7 @@ class RegisterView extends GetView<RegisterController> {
                 controller: controller.mobileController,
                 labelText: Strings.mobilePhone.tr,
                 keyboardType: TextInputType.text,
-                hint: '12345',
+                hint: '0591234567',
               ),
             ),
             SizedBox(height: 30.h),

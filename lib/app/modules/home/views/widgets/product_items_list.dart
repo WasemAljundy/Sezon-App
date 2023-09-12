@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sezon_app/app/modules/home/controllers/home_controller.dart';
+import 'package:sezon_app/app/routes/app_pages.dart';
 import 'package:sezon_app/utils/colors.dart';
 
 class ProductItemsList extends StatelessWidget {
@@ -41,67 +42,75 @@ class ProductItemsList extends StatelessWidget {
             crossAxisSpacing: 10,
           ),
           itemBuilder: (context, index) {
-            return Card(
-              elevation: 4,
-              clipBehavior: Clip.antiAlias,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Stack(
-                children: [
-                  Image.network(
-                    controller.productsList[index]['product_image'],
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: 110.h,
-                  ),
-                  Positioned(
-                    top: 10.h,
-                    right: 110.w,
-                    child: Container(
-                      width: 30.w,
-                      height: 30.h,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white30,
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          controller.performFavourite(
-                              controller.productsList[index]['product_name']);
-                        },
-                        child: Icon(
-                          controller.productsList[index]['is_favourite'] == true ?
-                          Icons.favorite : Icons.favorite_border,
-                          color: Colors.white70,
-                        ),
-                      ),
+            return InkWell(
+              onTap: () {
+                Get.toNamed(
+                  AppPages.PRODUCT_DETAILS,
+                  arguments: controller.productsList[index]['product_name'],
+                );
+              },
+              child: Card(
+                elevation: 4,
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Stack(
+                  children: [
+                    Image.network(
+                      controller.productsList[index]['product_image'],
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: 110.h,
                     ),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Center(
-                        child: Text(
-                          controller.productsList[index]['product_name'],
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 16.sp,
+                    Positioned(
+                      top: 10.h,
+                      right: 110.w,
+                      child: Container(
+                        width: 30.w,
+                        height: 30.h,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white30,
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            controller.performFavourite(
+                                controller.productsList[index]['product_name']);
+                          },
+                          child: Icon(
+                            controller.productsList[index]['is_favourite'] == true ?
+                            Icons.favorite : Icons.favorite_border,
+                            color: Colors.white70,
                           ),
                         ),
                       ),
-                      Text(
-                        controller.productsList[index]['product_price'],
-                        style: TextStyle(
-                          fontSize: 15.sp,
-                          color: AppColors.customRed,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            controller.productsList[index]['product_name'],
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        Text(
+                          controller.productsList[index]['product_price'],
+                          style: TextStyle(
+                            fontSize: 15.sp,
+                            color: AppColors.customRed,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             );
           },

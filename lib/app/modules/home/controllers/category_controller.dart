@@ -66,7 +66,6 @@ class CategoryController extends GetxController {
         (documentSnapshot.data() as Map<String, dynamic>);
         productsList.add(productData);
       }
-
       isLoading.value = false;
       return productsList;
     } catch (e) {

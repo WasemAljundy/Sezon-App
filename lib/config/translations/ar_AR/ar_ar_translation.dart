@@ -27,6 +27,14 @@ final Map<String, String> arAR =
   Strings.newAccount : "حساب جديد",
   Strings.haveAccount : "هل لديك حساب؟",
 
+  Strings.createdSuccessfully : "نجحت عملية الانشاء",
+  Strings.verifyMobile : "تم انشاء الحساب ، يرجى تفعيل رقم الهاتف",
+  Strings.passwordDidNotMatch : " تأكيد كلمة المرور غير متطابقة",
+  Strings.checkConfirmationPass : "يرجى التحقق من كلمة المرور المدخلة",
+  Strings.errorOccurred : "حدث خطأ ما",
+  Strings.verifySuccess : "تم التاكيد بنجاح",
+  Strings.verifySuccessMsg : "تمت عملية مصادقة الهاتف 😍",
+
   Strings.goodMorning : 'صباح الخير',
   Strings.name : 'وسيم الحندي',
   Strings.attendanceRegistration : 'تسجيل الحضور',
