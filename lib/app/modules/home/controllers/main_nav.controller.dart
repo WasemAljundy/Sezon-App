@@ -22,19 +22,28 @@ class MainNavController extends GetxController {
 
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
-    disposeControllers();
+    deleteControllers();
     Get.offAllNamed(AppPages.LOGIN);
   }
 
-  void disposeControllers() {
-    homeController.dispose();
-    categoryController.dispose();
-    shoppingController.dispose();
-    favouriteController.dispose();
+  void deleteControllers() {
+    Get.delete<HomeController>(
+      force: true,
+    );
+    Get.delete<CategoryController>(
+      force: true,
+    );
+    Get.delete<ShoppingController>(
+      force: true,
+    );
+    Get.delete<FavouriteController>(
+      force: true,
+    );
   }
 
   Future<List<Reference>> read() async {
-    ListResult listResult = await _firebaseStorage.ref('users_images').listAll();
+    ListResult listResult =
+        await _firebaseStorage.ref('users_images').listAll();
     if (listResult.items.isNotEmpty) {
       return listResult.items;
     }

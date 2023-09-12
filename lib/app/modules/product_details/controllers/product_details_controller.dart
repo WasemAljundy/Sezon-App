@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:sezon_app/app/components/custom_snackbar.dart';
+import 'package:sezon_app/app/modules/home/controllers/shopping_controller.dart';
 
 class ProductDetailsController extends GetxController {
   RxInt photoIndex = 0.obs;
@@ -64,23 +65,30 @@ class ProductDetailsController extends GetxController {
     final cartRef =
         FirebaseFirestore.instance.collection('user_carts').doc(userId);
     if (product != null) {
-      cartRef.set({
-        'cartItems': FieldValue.arrayUnion([
-          {
-            'product_name': product['product_name'],
-            'product_description': product['product_description'],
-            'product_price': product['product_price'],
-            'product_image': product['product_image'],
-            'category_name': product['category_name'],
-            'is_favourite': false,
-          }
-        ])
-      }, SetOptions(merge: true));
+      cartRef.set(
+        {
+          'cartItems': FieldValue.arrayUnion([
+            {
+              'product_name': product['product_name'],
+              'product_description': product['product_description'],
+              'product_price': product['product_price'],
+              'product_image': product['product_image'],
+              'category_name': product['category_name'],
+              'is_favourite': false,
+            }
+          ])
+        },
+        SetOptions(
+          merge: true,
+        ),
+      );
       isLoading.value = false;
       CustomSnackBar.showCustomSnackBar(
         title: 'تمت الاضافة بنجاح',
         message: 'تم اضافة هذا المنتج الى سلة الطلبات 😍',
       );
+      Get.find<ShoppingController>().fetchCartItems();
+
     } else {
       CustomSnackBar.showCustomErrorSnackBar(
         title: 'حدث خطأ ما',

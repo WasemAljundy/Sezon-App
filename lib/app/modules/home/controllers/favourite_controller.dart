@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:sezon_app/app/components/custom_snackbar.dart';
 import 'package:sezon_app/app/data/models/cart_item.dart';
 
 
 class FavouriteController extends GetxController {
 
-  final isFavourite = false.obs;
   final favouriteItems = [].obs;
 
   Future<void> fetchFavouriteItems() async {
@@ -33,6 +33,10 @@ class FavouriteController extends GetxController {
     if (indexToRemove != -1) {
       favouriteItems.removeAt(indexToRemove);
       updateFirestoreFavourite();
+      CustomSnackBar.showCustomSnackBar(
+        title: 'نجحت العملية',
+        message: 'تمت ازالة المنتج من المفضلات',
+      );
     }
   }
 

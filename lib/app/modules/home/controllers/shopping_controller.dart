@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:sezon_app/app/components/custom_snackbar.dart';
 import 'package:sezon_app/app/data/models/cart_item.dart';
 
 class ShoppingController extends GetxController {
@@ -37,6 +38,10 @@ class ShoppingController extends GetxController {
     if (indexToRemove != -1) {
       cartItems.removeAt(indexToRemove);
       updateFirestoreCart();
+      CustomSnackBar.showCustomSnackBar(
+        title: 'نجحت العملية',
+        message: 'تمت ازالة المنتج من سلة الطلبات',
+      );
     }
   }
 

@@ -10,6 +10,7 @@ import 'package:sezon_app/app/modules/home/views/nav_pages/shopping_nav_page.dar
 import 'package:sezon_app/app/modules/home/views/widgets/bottom_nav_bar.dart';
 import 'package:sezon_app/app/components/custom_app_bar.dart';
 import 'package:sezon_app/app/routes/app_pages.dart';
+import 'package:sezon_app/utils/colors.dart';
 
 class MainView extends GetView<MainNavController> {
   const MainView({Key? key}) : super(key: key);
@@ -55,10 +56,13 @@ class MainView extends GetView<MainNavController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.toNamed(Routes.ADMIN_ADD_PRODUCTS),
-        child: Icon(Icons.admin_panel_settings),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 30,
+        ),
+        backgroundColor: AppColors.customRed,
       ),
     );
   }
 }
-
-

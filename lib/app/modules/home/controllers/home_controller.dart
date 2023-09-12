@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:sezon_app/app/components/custom_snackbar.dart';
+import 'package:sezon_app/app/modules/home/controllers/favourite_controller.dart';
 
 class HomeController extends GetxController {
   late List<dynamic> users;
@@ -130,22 +131,17 @@ class HomeController extends GetxController {
       final productName = product['product_name'];
 
       try {
-        // Query the "products" collection to find the product by its name
         final productQuery = await FirebaseFirestore.instance
             .collection('products')
             .where('product_name', isEqualTo: productName)
             .get();
 
         if (productQuery.docs.isNotEmpty) {
-          // Get the product document reference
           final productDocRef = productQuery.docs.first.reference;
-
-          // Update the 'is_favourite' field in the 'products' collection
           await productDocRef.update({
             'is_favourite': true,
           });
 
-          // Update the is_favourite property in productsList
           final productIndex = productsList.indexWhere(
             (product) => product['product_name'] == productName,
           );
@@ -153,7 +149,6 @@ class HomeController extends GetxController {
             productsList[productIndex]['is_favourite'] = true;
           }
 
-          // Add the product to the 'user_favourites' collection
           final cartRef = FirebaseFirestore.instance
               .collection('user_favourites')
               .doc(userId);
@@ -172,13 +167,12 @@ class HomeController extends GetxController {
           }, SetOptions(merge: true));
 
           isLoading.value = false;
-
+          Get.find<FavouriteController>().fetchFavouriteItems();
           CustomSnackBar.showCustomSnackBar(
             title: 'تمت الاضافة بنجاح',
             message: 'تم اضافة هذا المنتج الى المفضلات ❤️',
           );
         } else {
-          // Handle the case where the product with the given name doesn't exist
           CustomSnackBar.showCustomErrorSnackBar(
             title: 'المنتج غير موجود',
             message:

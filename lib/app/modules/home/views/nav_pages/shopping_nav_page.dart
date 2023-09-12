@@ -5,7 +5,6 @@ import 'package:sezon_app/app/modules/home/controllers/shopping_controller.dart'
 import 'package:sezon_app/app/modules/home/views/widgets/product_cart_list.widget.dart';
 import 'package:sezon_app/utils/colors.dart';
 
-
 class ShoppingNavPage extends GetView<ShoppingController> {
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class ShoppingNavPage extends GetView<ShoppingController> {
               () => IndexedStack(
                 index: controller.selectedIndex.value,
                 children: [
-                  ProductCartList(controller: controller),
+                  ProductCartList(),
                   Center(
                     child: Text(
                       'لا توجد طلبات تم تسليمها 🥲',
@@ -51,4 +50,3 @@ class ShoppingNavPage extends GetView<ShoppingController> {
     );
   }
 }
-
