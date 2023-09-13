@@ -20,7 +20,7 @@ class RegisterCodeView extends GetView<RegisterCodeController> {
               children: [
                 AuthBackground(title: 'رمز التحقق'),
                 Text(
-                  ' لقد قمنا بارسال رمز التحقق إلى هذا الرقم +972592463727',
+                  ' لقد قمنا بارسال رمز التحقق إلى هذا الرقم الخاص بك',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 17.sp,
@@ -49,14 +49,14 @@ class RegisterCodeView extends GetView<RegisterCodeController> {
                       ),
                     ),
                     onCompleted: (value) {
-                      controller.sentCode = value;
+                      controller.smsCode = value;
                       print(value);
                     },
                   ),
                 ),
                 SizedBox(height: 50.h),
                 ElevatedButton(
-                  onPressed: () => controller.verifyCode(controller.sentCode),
+                  onPressed: () => controller.verifyCode(),
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(340.h, 50.w),
                     backgroundColor: AppColors.customRed,

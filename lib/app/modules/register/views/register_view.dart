@@ -66,6 +66,7 @@ class RegisterView extends GetView<RegisterController> {
                 controller.registerWithUsernameAndPassword(
                   controller.nameController.text,
                   controller.passwordController.text,
+                  controller.confirmPasswordController.text,
                   controller.mobileController.text,
                 );
               },

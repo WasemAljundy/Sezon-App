@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:sezon_app/app/modules/login/controllers/login_controller.dart';
 import 'package:sezon_app/app/modules/login/views/widgets/app_text_field.dart';
 import 'package:sezon_app/app/modules/login/views/widgets/auth_background.dart';
-import 'package:sezon_app/app/routes/app_pages.dart';
 import 'package:sezon_app/config/translations/strings_enum.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -56,7 +55,7 @@ class LoginView extends GetView<LoginController> {
                 minimumSize: Size(340.h, 50.w),
                 backgroundColor: Color(0xffD92728),
               ),
-              onPressed: () => controller.signInWithUsernameAndPassword(
+              onPressed: () => controller.signIn(
                 controller.nameController.text,
                 controller.passwordController.text,
               ),
